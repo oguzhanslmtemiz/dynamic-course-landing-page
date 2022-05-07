@@ -1,6 +1,8 @@
 import type { NextPage, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import { gql, GraphQLClient } from 'graphql-request'
+import CourseSection from '../components/CourseSection'
+import { Course } from '../interfaces'
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   course,
@@ -11,7 +13,9 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>{JSON.stringify(course)}</h1>
+      {course.courseDetail.map((section) => (
+        <CourseSection details={section} key={section.id} />
+      ))}
     </div>
   )
 }
@@ -35,13 +39,6 @@ const query = gql`
     }
   }
 `
-
-type Course = {
-  id: string
-  name: string
-  slug: string
-  courseDetail: []
-}
 
 export async function getStaticProps() {
   const endpoint = 'https://graphql.datocms.com/'
