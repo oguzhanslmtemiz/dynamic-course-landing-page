@@ -2,7 +2,7 @@ import type { NextPage, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import { gql, GraphQLClient } from 'graphql-request'
 import CourseSection from '../components/CourseSection'
-import { Course } from '../interfaces'
+import { ICourse } from '../interfaces'
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   course,
@@ -35,6 +35,45 @@ const query = gql`
           description
           buttonText
         }
+        ... on CalloutRecord {
+          __typename
+          id
+          smallTitle
+          description
+          bigTitle
+          image {
+            url
+            width
+            height
+          }
+        }
+        ... on LearningSectionRecord {
+          __typename
+          numberOfLessons
+          id
+          hoursOfContent
+          title
+          learningPoints {
+            id
+            title
+          }
+        }
+        ... on PricingSectionRecord {
+          __typename
+          id
+          title
+          pricingCards {
+            id
+            isFree
+            title
+            priceSuffix
+            priceInCents
+            finePrint
+            featured
+            description
+            buttonText
+          }
+        }
       }
     }
   }
@@ -48,7 +87,7 @@ export async function getStaticProps() {
       authorization: 'Bearer ' + process.env.DATOCMS_API_KEY,
     },
   })
-  const { course }: { course: Course } = await graphQLClient.request(query)
+  const { course }: { course: ICourse } = await graphQLClient.request(query)
 
   return {
     props: { course },

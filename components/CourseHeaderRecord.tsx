@@ -1,6 +1,8 @@
-import { CourseDetail } from '../interfaces'
+import { ICourseHeader } from '../interfaces'
 
-type Props = { details: CourseDetail }
+type Props = {
+  details: ICourseHeader
+}
 
 export default function CourseHeaderRecord({ details }: Props) {
   const sentences = details.description.trim().split('.')
