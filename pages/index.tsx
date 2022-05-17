@@ -41,10 +41,11 @@ const query = gql`
           smallTitle
           description
           bigTitle
-          image {
+          images {
             url
             width
             height
+            title
           }
         }
         ... on LearningSectionRecord {

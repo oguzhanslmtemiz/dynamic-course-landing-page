@@ -27,11 +27,12 @@ export interface ICalloutRecord {
   bigTitle: string
   smallTitle: string
   description: string
-  image: {
+  images: {
     url: string
     width: number
     height: number
-  }
+    title: string
+  }[]
 }
 
 export interface ILearningSectionRecord {
