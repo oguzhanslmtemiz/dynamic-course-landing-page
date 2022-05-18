@@ -16,7 +16,7 @@ export default function CourseSection({ details }: Props) {
   } else if (details.__typename === 'LearningSectionRecord') {
     return <LearningSectionRecord details={details} />
   } else if (details.__typename === 'PricingSectionRecord') {
-    return <PricingSectionRecord />
+    return <PricingSectionRecord details={details} />
   }
-  return <div>Course Section</div>
+  return null
 }
