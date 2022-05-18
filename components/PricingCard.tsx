@@ -1,5 +1,3 @@
-import Image from 'next/image'
-// import Check from '../public/'
 import CheckSvg from '../public/CheckSvg'
 import { IPricingSectionRecord } from '../interfaces'
 

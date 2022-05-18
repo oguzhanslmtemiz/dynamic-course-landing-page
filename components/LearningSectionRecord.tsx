@@ -5,7 +5,7 @@ type Props = { details: ILearningSectionRecord }
 
 export default function LearningSectionRecord({ details }: Props) {
   return (
-    <div className="px-8 py-20 mx-auto font-medium max-w-7xl selection:bg-amber-300">
+    <div className="px-8 py-20 mx-auto font-medium max-w-7xl">
       <div className="relative ">
         <div className="absolute -z-10 -rotate-6 -top-11 sm:-top-9 xl:-left-16 -left-6">
           <Image src="/undraw_handcrafts_browser.svg" width={90} height={90} />
