@@ -87,7 +87,6 @@ export async function getStaticProps() {
       authorization: 'Bearer ' + process.env.DATOCMS_API_KEY,
     },
   })
-  console.log('>>>', graphQLClient)
   const { course }: { course: ICourse } = await graphQLClient.request(query)
 
   return {
