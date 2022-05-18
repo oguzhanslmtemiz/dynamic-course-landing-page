@@ -8,9 +8,9 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   course,
 }) => {
   return (
-    <div>
+    <div className="selection:bg-amber-300">
       <Head>
-        <title>Create Next App</title>
+        <title>Getting Started with JavaScript</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {course.courseDetail.map((section) => (
@@ -84,10 +84,10 @@ export async function getStaticProps() {
   const endpoint = 'https://graphql.datocms.com/'
   const graphQLClient = new GraphQLClient(endpoint, {
     headers: {
-      'content-type': 'application/json',
       authorization: 'Bearer ' + process.env.DATOCMS_API_KEY,
     },
   })
+  console.log('>>>', graphQLClient)
   const { course }: { course: ICourse } = await graphQLClient.request(query)
 
   return {
